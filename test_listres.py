@@ -79,7 +79,7 @@ for d in dates:
         else: 
             dic_df['tagclean'] = '--'
 
-#data = json.dumps(dic_df)
+data = json.dumps(dic_df)
 
 
 
@@ -125,7 +125,7 @@ columns = [
   }
 ]
 
-#jdata=json.dumps(data)
+jdata=json.dumps(data)
 
 @app.route('/')
 def index():
@@ -136,5 +136,5 @@ def index():
 
 
 if __name__ == '__main__':
-	#print jdata
+  print (jdata)
   app.run(debug=True)
