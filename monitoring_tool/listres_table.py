@@ -62,8 +62,8 @@ def listres(date,hour):
             mpgfile=paths['mp4'].format(name=name)
             scale4file=mpgfile+'.scale4.mp4'
             tagrawfile='/work/rmegret/jreyes/data/rawtags/C02_'+name+'/tagjson/tags_00009.json'
-            tagmergefile='/work/rmegret/jreyes/data/mergedtags/tags-C02_'+name+'-0-72100.json'
-            tagcleanfile='/work/rmegret/jreyes/data/cleantags/Tags-C02_'+name+'.json'
+            tagmergefile='/work/rmegret/rmegret/tags/'+name+'/tags-C02_'+name+'-0-72100.json'
+            tagcleanfile='/work/rmegret/rmegret/tags/Tags/Tags-C02_'+name+'.json'
             
             item['name']= name
             item['date']= d
