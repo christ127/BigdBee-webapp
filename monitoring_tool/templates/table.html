@@ -1,0 +1,23 @@
+<!doctype html>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+<table class="centered thick-border">
+	<tr>
+	{% set keys = table[0].keys() %}
+	
+	{% for key in keys %}
+		<th>{{key}}</th>
+	{% endfor %}
+		
+	</tr> 
+
+	<tr>
+	{% for item in table %}
+	{% for key in keys %}
+		<td>{{ item[key] }}</td>
+			
+	{% endfor %}
+	{% endfor %}
+	</tr>		
+</table>
