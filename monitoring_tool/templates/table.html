@@ -4,20 +4,18 @@
 
 <table class="centered thick-border">
 	<tr>
-	{% set keys = table[0].keys() %}
-	
-	{% for key in keys %}
+	{%- set keys = table[0].keys() %}
+
+	{%- for key in keys %}
 		<th>{{key}}</th>
-	{% endfor %}
-		
+	{%- endfor %}
 	</tr> 
 
+	{%- for item in table %}
 	<tr>
-	{% for item in table %}
-	{% for key in keys %}
+	{%- for key in keys %}
 		<td>{{ item[key] }}</td>
-			
-	{% endfor %}
-	{% endfor %}
-	</tr>		
+	{%- endfor %}
+	</tr>	
+	{%- endfor %}	
 </table>
