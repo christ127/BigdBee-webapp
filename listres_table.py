@@ -39,9 +39,12 @@ def listres(date,hour):
     dates = str(date).split(',')
     hours = str(hour).split(',')
     print(dates)
-    dic_df = {'name':0,'date':0,'hour':0,'avi':0, 'mp4':0, 'scale4':0, 'tagraw':0,'tagmerge':0,'tagclean':0}
+    table = []
+    #{'name':0,'date':0,'hour':0,'avi':0, 'mp4':0, 'scale4':0, 'tagraw':0,'tagmerge':0,'tagclean':0}
     for d in dates:
         for h in hours:
+            item = {'name':'','date':'','hour':'','avi':'', 'mp4':'', 'scale4':'', 'tagraw':'','tagmerge':'','tagclean':''}
+            
             name = str(d[:2])+d[2:4]+d[4:6] + h + '0000'
             vname= 'C02_' + name
             avifile='/work/rmegret/jreyes/data/videos/avi/*_02_R_'+name+'.avi'
@@ -52,32 +55,33 @@ def listres(date,hour):
             tagmergefile='/work/rmegret/jreyes/data/mergedtags/tags-C02_'+name+'-0-72100.json'
             tagcleanfile='/work/rmegret/jreyes/data/cleantags/Tags-C02_'+name+'.json'
             
-            dic_df['name']= name
-            dic_df['date']= d
-            dic_df['hour'] = h
+            item['name']= name
+            item['date']= d
+            item['hour'] = h
             #import pdb; pdb.set_trace
-            dic_df['scale4'] = ok(os.path.isfile(scale4file), 'ok  ','--')
-            dic_df['tagraw'] = ok(os.path.isfile(tagrawfile),  'ok  ','--')
-            dic_df['tagmerge'] = ok(os.path.isfile(tagmergefile),  'ok ','--')
+            item['scale4'] = ok(os.path.isfile(scale4file), 'ok  ','--')
+            item['tagraw'] = ok(os.path.isfile(tagrawfile),  'ok  ','--')
+            item['tagmerge'] = ok(os.path.isfile(tagmergefile),  'ok ','--')
 
             avis = glob.glob(avifile)
 
             if (len(avis)>0):
                 if (os.path.isfile(avis[0])):
-                    dic_df['avi'] = str(file_size(avifile))
+                    item['avi'] = str(file_size(avifile))
             else:
-                dic_df['avi'] = '--'
+                item['avi'] = '--'
             if (os.path.isfile(mpgfile)):
-                dic_df['mp4'] =  "File exists," + str(file_size(mpgfile))
+                item['mp4'] =  "File exists," + str(file_size(mpgfile))
             else:
-                dic_df['mp4'] = '--'
+                item['mp4'] = '--'
             if (os.path.isfile(tagcleanfile)):
-                dic_df['tagclean'] = "File exists," + str(file_size(tagcleanfile))
+                item['tagclean'] = "File exists," + str(file_size(tagcleanfile))
             else:
-                 dic_df['tagclean'] = '--'
-
-    print(dic_df)
-    return render_template("table.html", dic_df = dic_df)
+                item['tagclean'] = '--'
+            table.append(item)
+                
+    print(table)
+    return render_template("table.html", dic_df = table)
 
 if __name__ == '__main__':
   app.run(debug=True)
