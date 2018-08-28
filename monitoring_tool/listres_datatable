@@ -91,10 +91,15 @@ def listres(date,hour):
                 item['tagclean'] = "File exists," + str(file_size(tagcleanfile))
             else:
                 item['tagclean'] = '--'
-            table.append(item)
+            testing = json.dumps(item)
+            print(testing)
+            
+            return json.dumps(item)
+
+            #table.append(item)
+
                 
-    print(table)
-    return render_template("table.html", table = table)
+   
 
 if __name__ == '__main__':
   config_file = 'listres_config.json'

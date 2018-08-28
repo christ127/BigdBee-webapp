@@ -65,7 +65,7 @@ def listres(date,hour):
             mpgfile=paths['mp4'].format(name=name)
             scale4file=mpgfile+'.scale4.mp4'
             tagrawfile=paths['raw'].format(name=name)
-            tagmergerfile=paths['merge'].format(name=name)
+            tagmergefile=paths['merge'].format(name=name)
             tagcleanfile=paths['clean'].format(name=name)
             
             
@@ -91,10 +91,15 @@ def listres(date,hour):
                 item['tagclean'] = "File exists," + str(file_size(tagcleanfile))
             else:
                 item['tagclean'] = '--'
-            table.append(item)
-                
-    print(table)
-    return render_template("table.html", table = table)
+            #sending data to the client
+            return json.dumps(item)
+
+            #table.append(item)
+
+@app.route('/listres/view')
+def listres_view():
+    return render_template('datatable.html')              
+   
 
 if __name__ == '__main__':
   config_file = 'listres_config.json'
