@@ -24,20 +24,11 @@
             $('#dt_table').DataTable({
                 serverSide: true,
                 ajax: {
-                    //using listres function from the server
-                    //here is where it doesn't work
-                    url: '{{ url_for('listres')}}',
-                    dataSrc: 'data',
-                    type: 'GET',
-                    data: function (item) {
-                        //args.qString = getQuerystring(); //add in querystring args, or anything else you want
-                        return {
-                            "item": JSON.stringify(item)
-                        };
-                    }
+                    url:"/listres_dt/{{dates}}/{{hours}}",
+                    "dataSrc": ""
                 },
                 columns: [
-                    {data: 'name',
+                    {data: 'name'},
                     {data: 'date'},
                     {data: 'hour'},
                     {data: 'avi'},
@@ -117,7 +108,7 @@
             return filters
         }
     </script>
-    </HEAD>>
+    </HEAD>
     <BODY>
 
     <div class="container">

@@ -42,8 +42,7 @@ def convert_bytes(num):
             return "%3.1f%s" % (num, x)
         num /= 1000.0
 
-@app.route('/listres/<date>/<hour>')
-def listres(date,hour):
+def listres_table(date, hour):
     #ate_in = str(input("Please write the date you are looking for. Should be in YYMMDD format."))
     #our_in = str(input("Please write the hours you in are looking for. Should be in HH format."))
 
@@ -52,6 +51,7 @@ def listres(date,hour):
     print(dates)
     table = []
     #{'name':0,'date':0,'hour':0,'avi':0, 'mp4':0, 'scale4':0, 'tagraw':0,'tagmerge':0,'tagclean':0}
+    
     for d in dates:
         for h in hours:
             item = {'name':'','date':'','hour':'','avi':'', 'mp4':'', 'scale4':'', 'tagraw':'','tagmerge':'','tagclean':''}
@@ -67,7 +67,6 @@ def listres(date,hour):
             tagrawfile=paths['raw'].format(name=name)
             tagmergefile=paths['merge'].format(name=name)
             tagcleanfile=paths['clean'].format(name=name)
-            
             
             item['name']= name
             item['date']= d
@@ -91,14 +90,35 @@ def listres(date,hour):
                 item['tagclean'] = "File exists," + str(file_size(tagcleanfile))
             else:
                 item['tagclean'] = '--'
-            #sending data to the client
-            return json.dumps(item)
+                
+            table.append(item)
+    return table
 
-            #table.append(item)
+@app.route('/listres/<dates>/<hours>')
+def listres(dates,hours):
+    table = listres_table(dates,hours)
+            
+    #sending data to the client
+    return json.dumps(table)
+    
+@app.route('/listres_dt/<dates>/<hours>')
+def listres_json(dates,hours):
 
-@app.route('/listres/view')
-def listres_view():
-    return render_template('datatable.html')              
+    table = listres_table(dates,hours)
+    
+    print(len(table))
+    
+    data = {'recordsTotal': len(table),
+            'recordsFiltered': len(table),
+            'draw':1,
+            'data': table }
+
+    return json.dumps(data)
+
+@app.route('/listresview/<dates>/<hours>')
+def listres_view(dates,hours):
+    return render_template('datatable.html',dates=dates,hours=hours)              
+
    
 
 if __name__ == '__main__':
