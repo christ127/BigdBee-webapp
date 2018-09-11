@@ -22,10 +22,10 @@
             <script>
         $(function () {
             $('#dt_table').DataTable({
-                serverSide: true,
+                serverSide: false,
                 ajax: {
                     url:"/listres_dt/{{dates}}/{{hours}}",
-                    "dataSrc": ""
+                    "dataSrc": "data"
                 },
                 columns: [
                     {data: 'name'},

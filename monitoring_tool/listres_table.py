@@ -65,7 +65,7 @@ def listres(date,hour):
             mpgfile=paths['mp4'].format(name=name)
             scale4file=mpgfile+'.scale4.mp4'
             tagrawfile=paths['raw'].format(name=name)
-            tagmergerfile=paths['merge'].format(name=name)
+            tagmergefile=paths['merge'].format(name=name)
             tagcleanfile=paths['clean'].format(name=name)
             
             

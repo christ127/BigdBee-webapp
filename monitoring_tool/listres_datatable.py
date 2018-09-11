@@ -99,7 +99,10 @@ def listres(dates,hours):
     table = listres_table(dates,hours)
             
     #sending data to the client
+    print("listres function:")
+    print (table) 
     return json.dumps(table)
+
     
 @app.route('/listres_dt/<dates>/<hours>')
 def listres_json(dates,hours):
@@ -113,6 +116,8 @@ def listres_json(dates,hours):
             'draw':1,
             'data': table }
 
+    print("listres_dt function:")
+    print(data)
     return json.dumps(data)
 
 @app.route('/listresview/<dates>/<hours>')
