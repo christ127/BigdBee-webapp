@@ -80,7 +80,7 @@ for d in dates:
             dic_df['tagclean'] = '--'
         json_dic = json.dumps(dic_df)
         print(json_dic)
-        table.append(json_dic)
+        table.append(dic_df)
         
 
 #save the dictionary in a file 
