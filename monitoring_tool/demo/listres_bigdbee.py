@@ -9,15 +9,17 @@ app = Flask(__name__)
 
 @app.route('/listres/data')
 def getData():
-    file = open("data.txt", "r") 
-    table = file.read()
-    data = {'recordsTotal': 100,
-    'recordsFiltered': 100,
+    with open('data.txt') as json_file:  
+      table = json.load(json_file)
+
+    
+    data = {'recordsTotal': len(table),
+    'recordsFiltered': len(table),
     'draw':1,
     'data': table}
 
   
-    return json.dumps(table)
+    return json.dumps(data)
 
 @app.route('/listresview')
 def listres():

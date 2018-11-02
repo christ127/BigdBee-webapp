@@ -84,11 +84,8 @@ for d in dates:
         
 
 #save the dictionary in a file 
-print(table)
-table = json.dumps(table)
-
-tfile = open('data.txt','w')
-tfile.write(table)
+with open('data.txt', 'w') as tfile:  
+    json.dump(table, tfile)
 tfile.close()
 
 config_file = 'listres_config.json'
