@@ -3,30 +3,28 @@ import json
 import os
 import math
 import datetime
-from import app
 
 
-
+app = Flask(__name__)
 
 @app.route('/listres/data')
 def getData():
-    with open('data.txt') as json_file:  
-      table = json.load(json_file)
+	file = open("/data.txt", "r") 
+	table = file.read()
 
-    
-    data = {'recordsTotal': len(table),
-    'recordsFiltered': len(table),
-    'draw':1,
-    'data': table}
+  data = {'recordsTotal': len(table),
+  'recordsFiltered': len(table),
+  'draw':1,
+  'data': table}
 
   
-    return json.dumps(data)
+	return json.dumps(table)
 
 @app.route('/listresview')
 def listres():
 
-    #table = getData()
-    return render_template('datatable_big.html')     
+    table = getData()
+    return render_template('datatable.html', table = table) 	
 
 
 
@@ -36,4 +34,6 @@ if __name__ == '__main__':
   if (os.path.isfile(config_file)):
     with open(config_file,'r') as fp:
       config = json.load(fp)
+  print('CONFIG:')
+  print(config)
   app.run(debug=True,port = 8100)

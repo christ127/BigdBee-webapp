@@ -35,11 +35,18 @@ config = {
     }
 }
 
+month = str(input("Month, format MM: "))
+year = str(input("Year, format YY: "))
+dates = []
+for i in range(1,10):
+    x = year+ month + str(0)+ str(i) 
+    dates.append(x)
+for i in range(10,32):
+    x = year+ month + str(i) 
+    dates.append(x)
+print(dates)
 
-date_in = input("Please write the date you are looking for. Should be in YYMMDD format.")
-hour_in = "07,08,09,10,11,12,13,14,15,16,17,18,19"
-
-dates = date_in.split(",")
+hour_in = "01,02,03,04,05,06,07,08,09,10,11,12"
 hours = hour_in.split(",")
 table = []
 for d in dates:

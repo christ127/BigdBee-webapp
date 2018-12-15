@@ -1,9 +1,11 @@
+
 {
     "paths":{
-        "avi":"/work/rmegret/jreyes/data/videos/avi/*_02_R_{name}.avi",
-        "mp4":"/work/rmegret/jreyes/data/videos/mp4/C02_{name}.mp4",
-        "raw":"/work/rmegret/jreyes/data/rawtags/C02_{name}/tagjson/tags_00009.json",
+        "avi":"/work/rmegret/sfeliciano/Gurabo/*_02_R_{name}.avi",
+        "mp4":"/work/rmegret/rmegret/videos/Gurabo/C02_{name}.mp4",
+        "raw":"/work/rmegret/rmegret/tags/C02_{name}/tagjson/tags_65000-69999.json",
         "merge":"/work/rmegret/rmegret/tags/{name}/tags-C02_{name}-0-72100.json",
         "clean":"/work/rmegret/rmegret/tags/Tags/Tags-C02_{name}.json"
     }
 }
+

@@ -1,0 +1,9 @@
+{
+    "paths":{
+        "avi":"/work/rmegret/rmegret/datasets/avi/Gurabo/*_02_R_{name}.avi",
+        "mp4":"/work/rmegret/rmegret/datasets/mp4/Gurabo/C02_{name}.mp4",
+        "raw":"/work/rmegret/rmegret/datasets/tagraw/Gurabo/C02_{name}/tags_65000-69999.json",
+        "merge":"/work/rmegret/rmegret/datasets/tagmerged/Gurabo/{name}/tags-C02_{name}-0-72100.json",
+        "clean":"/work/rmegret/rmegret/datasets/tag/Gurabo/Tags-C02_{name}.json"
+    }
+}
